@@ -1,0 +1,100 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+h1 {
+    margin:auto;
+}
+
+.dice {
+    border: 3px solid red;
+    background-color: rgb(236, 235, 223);
+    height: 250px;
+    width: 250px;
+    margin: 15px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* .dice-contents:has(+ dot-1, + dot-2, + dot-3) {
+    display: flex;
+    border: 1px solid black;
+    height: 15%;
+    width: 15%;
+    border-radius: 50%;
+
+} */
+
+.dot-1, .dot-2, .dot-3 {
+    display: flex;
+    border: 1px solid black;
+    height: 35%;
+    width: 35%;
+    border-radius: 50%;
+    display: none;
+    background-color: black;
+}
+
+.letter-L, .letter-C, .letter-R {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 4.5rem;
+    height: 35%;
+    border: 1px solid black;
+    margin: 0%;
+    padding: 0 5%;
+    display: none;
+}
+
+.dice-1__letter-L--toggle {
+    display: flex;
+}
+
+.dice-1__dot-1--toggle {
+    display: flex;
+}
+
+.dice-1__letter-R--toggle {
+    display: flex;
+}
+
+.dice-1__letter-C--toggle {
+    display: flex;
+}
+
+.dice-2__letter-L--toggle {
+    display: flex;
+}
+
+.dice-2__dot-1--toggle {
+    display: flex;
+}
+
+.dice-2__letter-R--toggle {
+    display: flex;
+}
+
+.dice-2__letter-C--toggle {
+    display: flex;
+}
+
+.dice-3__letter-L--toggle {
+    display: flex;
+}
+
+.dice-3__dot-1--toggle {
+    display: flex;
+}
+
+.dice-3__letter-R--toggle {
+    display: flex;
+}
+
+.dice-3__letter-C--toggle {
+    display: flex;
+}
