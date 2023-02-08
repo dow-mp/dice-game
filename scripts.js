@@ -1,10 +1,10 @@
-// on click anywhere on the page, each die should toggle some classes on/off (i.e. display: none) based on a randomly assigned value
-
 let diceOneRandomVal;
 let diceTwoRandomVal;
 let diceThreeRandomVal;
 
 let diceOneArray;
+let diceTwoArray;
+let diceThreeArray;
 
 function getDiceOneElements() {
     const diceOneDivL = document.getElementsByClassName("dice1-contents letter-L"); 
@@ -13,66 +13,129 @@ function getDiceOneElements() {
     const diceOneDivC = document.getElementsByClassName("dice1-contents letter-C");
 
     diceOneArray = [diceOneDivL, diceOneDiv, diceOneDivR, diceOneDivC];
-    console.log(diceOneArray);
     
     return diceOneArray;
 }
 
-console.log("dice one elements: ", getDiceOneElements());
+function getDiceTwoElements() {
+    const diceTwoDivL = document.getElementsByClassName("dice2-contents letter-L"); 
+    const diceTwoDiv = document.getElementsByClassName("dice2-contents dot-1");
+    const diceTwoDivR = document.getElementsByClassName("dice2-contents letter-R");
+    const diceTwoDivC = document.getElementsByClassName("dice2-contents letter-C");
 
+    diceTwoArray = [diceTwoDivL, diceTwoDiv, diceTwoDivR, diceTwoDivC];
+    
+    return diceTwoArray;
+}
 
-// console.log(diceOneDivL, diceOneDiv, diceOneDivR, diceOneDivC);
+function getDiceThreeElements() {
+    const diceThreeDivL = document.getElementsByClassName("dice3-contents letter-L"); 
+    const diceThreeDiv = document.getElementsByClassName("dice3-contents dot-1");
+    const diceThreeDivR = document.getElementsByClassName("dice3-contents letter-R");
+    const diceThreeDivC = document.getElementsByClassName("dice3-contents letter-C");
 
-
-// *********** functionality of displaying the roll for dice one is working - but i need a way to toggle OFF the previously toggle class if clicked previously
+    diceThreeArray = [diceThreeDivL, diceThreeDiv, diceThreeDivR, diceThreeDivC];
+    
+    return diceThreeArray;
+}
 
 function removeClass(element, className) {
     element.classList.remove(`${className}`)
 };
 
 
-function resetDisplay() {
-    console.log(diceOneArray[0]);
-    
+function resetDiceOne() { 
     removeClass(diceOneArray[0][0], "dice-1__letter-L--toggle");
     removeClass(diceOneArray[1][0], "dice-1__dot-1--toggle");
     removeClass(diceOneArray[2][0], "dice-1__letter-R--toggle");
     removeClass(diceOneArray[3][0], "dice-1__letter-C--toggle");
 };
 
+function resetDiceTwo() { 
+    removeClass(diceTwoArray[0][0], "dice-2__letter-L--toggle");
+    removeClass(diceTwoArray[1][0], "dice-2__dot-1--toggle");
+    removeClass(diceTwoArray[2][0], "dice-2__letter-R--toggle");
+    removeClass(diceTwoArray[3][0], "dice-2__letter-C--toggle");
+};
+
+function resetDiceThree() { 
+    removeClass(diceThreeArray[0][0], "dice-3__letter-L--toggle");
+    removeClass(diceThreeArray[1][0], "dice-3__dot-1--toggle");
+    removeClass(diceThreeArray[2][0], "dice-3__letter-R--toggle");
+    removeClass(diceThreeArray[3][0], "dice-3__letter-C--toggle");
+};
+
+function rollDiceOne() {
+    getDiceOneElements();
+    diceOneRandomVal = Math.floor(Math.random() * 1000 + 1);
+    if (diceOneRandomVal >= 501 && diceOneRandomVal <= 666) {
+        resetDiceOne();
+        console.log(`L: between 501 and 666 ::: ${diceOneRandomVal}`);
+        diceOneArray[0][0].classList.toggle("dice-1__letter-L--toggle");
+    } else if(diceOneRandomVal > 0 && diceOneRandomVal <= 500) {
+        resetDiceOne();
+        console.log(`Dot: between 0 and 500 ::: ${diceOneRandomVal}`);
+        diceOneArray[1][0].classList.toggle("dice-1__dot-1--toggle");
+    } else if (diceOneRandomVal >= 667 && diceOneRandomVal <= 833){
+        resetDiceOne();
+        console.log(`R: between 667 and 833 ::: ${diceOneRandomVal}`);
+        diceOneArray[2][0].classList.toggle("dice-1__letter-R--toggle");
+    } else {
+        resetDiceOne();
+        console.log(`C: 834 plus ::: ${diceOneRandomVal}`);
+        diceOneArray[3][0].classList.toggle("dice-1__letter-C--toggle");
+    }
+}
+
+function rollDiceTwo() {
+    getDiceTwoElements();
+    diceTwoRandomVal = Math.floor(Math.random() * 1000 + 1);
+    if (diceTwoRandomVal > 334 && diceTwoRandomVal < 500) {
+        resetDiceTwo();
+        console.log(`L: between 334 and 500 ::: ${diceTwoRandomVal}`);
+        diceTwoArray[0][0].classList.toggle("dice-2__letter-L--toggle");
+    } else if(diceTwoRandomVal >= 501 && diceTwoRandomVal <= 1000) {
+        resetDiceTwo();
+        console.log(`Dot: between 501 and 1000 ::: ${diceTwoRandomVal}`);
+        diceTwoArray[1][0].classList.toggle("dice-2__dot-1--toggle");
+    } else if (diceTwoRandomVal >= 168 && diceTwoRandomVal <= 333){
+        resetDiceTwo();
+        console.log(`R: between 168 and 333 ::: ${diceTwoRandomVal}`);
+        diceTwoArray[2][0].classList.toggle("dice-2__letter-R--toggle");
+    } else {
+        resetDiceTwo();
+        console.log(`C: under 167 ::: ${diceTwoRandomVal}`);
+        diceTwoArray[3][0].classList.toggle("dice-2__letter-C--toggle");
+    }
+}
+
+function rollDiceThree() {
+    getDiceThreeElements();
+    diceThreeRandomVal = Math.floor(Math.random() * 1000 + 1);
+    if (diceThreeRandomVal >= 834 && diceThreeRandomVal <= 1000) {
+        resetDiceThree();
+        console.log(`L: between 834 and 1000 ::: ${diceThreeRandomVal}`);
+        diceThreeArray[0][0].classList.toggle("dice-3__letter-L--toggle");
+    } else if(diceThreeRandomVal >= 334 && diceThreeRandomVal <= 834) {
+        resetDiceThree();
+        console.log(`Dot: between 334 and 834 ::: ${diceTwoRandomVal}`);
+        diceThreeArray[1][0].classList.toggle("dice-3__dot-1--toggle");
+    } else if (diceThreeRandomVal > 0 && diceThreeRandomVal <= 167){
+        resetDiceThree();
+        console.log(`R: between 0 and 167 ::: ${diceThreeRandomVal}`);
+        diceThreeArray[2][0].classList.toggle("dice-3__letter-R--toggle");
+    } else {
+        resetDiceThree();
+        console.log(`C: between 168 and 333 ::: ${diceThreeRandomVal}`);
+        diceThreeArray[3][0].classList.toggle("dice-3__letter-C--toggle");
+    }
+}
 
 function playGame() {
     getDiceOneElements();
-    // declaring the random number associated with each die on the page
-    diceOneRandomVal = Math.floor(Math.random() * 1000 + 1);
-    diceTwoRandomVal = Math.floor(Math.random() * 1000 + 1);
-    diceThreeRandomVal = Math.floor(Math.random() * 1000 + 1);
-
-
-    // assigning a result to a range of values for each die on the page
-    // between 1 and 224
-    if (diceOneRandomVal > 0 && diceOneRandomVal < 225) {
-        resetDisplay();
-        console.log(`L: between 1 and 224 ::: ${diceOneRandomVal}`);
-        // if the random number value for dice 1 is as noted, find the correct div and turn on the class called ...--toggle to change the display for that element to display: flex from display: none
-        // select all elements with class name "dice-1"
-        diceOneArray[0][0].classList.toggle("dice-1__letter-L--toggle");
-    // between 225 and 500
-    } else if(diceOneRandomVal > 224 && diceOneRandomVal < 501) {
-        resetDisplay();
-        console.log(`Dot: between 225 and 500 ::: ${diceOneRandomVal}`);
-        diceOneArray[1][0].classList.toggle("dice-1__dot-1--toggle");
-    // between 501 and 749
-    } else if (diceOneRandomVal > 500 && diceOneRandomVal < 750){
-        resetDisplay();
-        console.log(`R: between 501 and 749 ::: ${diceOneRandomVal}`);
-        diceOneArray[2][0].classList.toggle("dice-1__letter-R--toggle");
-    // all other possible numbers
-    } else {
-        resetDisplay();
-        console.log(`C: 750 plus ::: ${diceOneRandomVal}`);
-        diceOneArray[3][0].classList.toggle("dice-1__letter-C--toggle");
-    }
+    rollDiceOne();
+    rollDiceTwo();
+    rollDiceThree();
 }
 
 

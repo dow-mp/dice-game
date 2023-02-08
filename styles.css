@@ -39,6 +39,10 @@ h1 {
     border-radius: 50%;
     display: none;
     background-color: black;
+    /* text-align:center;
+    vertical-align: center; */
+    justify-content: center;
+    align-items: center;
 }
 
 .letter-L, .letter-C, .letter-R {
