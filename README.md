@@ -30,14 +30,12 @@ Open any issues or suggest features at [Dow-mp Dice Game Issue Reporting](https:
 
 ## Authors
 
-Danielle Petrides  
-[@Danimitchp](https://twitter.com/danimitchp) <br>
-[LinkedIn](https://www.linkedin.com/in/dpetrides)
+Danielle Petrides  |   [@Danimitchp](https://twitter.com/danimitchp)  |  [LinkedIn](https://www.linkedin.com/in/dpetrides)
 
 ## Version History
 
 * 0.1
-    * Initial Release Feb 2023
+  - Initial Release Feb 2023
 
 ## Planned Upgrades
 
@@ -45,3 +43,8 @@ Danielle Petrides
 * dark mode
 * additional accessibility features
 * refactor using React.js
+
+## Acknowledgements
+
+* README template by: Dominique Pizzie [@DomPizzie](https://twitter.com/dompizzie) 
+  

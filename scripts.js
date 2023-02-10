@@ -5,6 +5,16 @@ let diceThreeRandomVal;
 let diceOneArray;
 let diceTwoArray;
 let diceThreeArray;
+let diceArray = [];
+
+// returns a nested array of elements [[HTML Collection containing classList "dice1..."], HTML Collection containing classList "dice2..."], [HTML Collection containing classList "dice3"]]
+function getDiceElements() {
+    diceArray.push(document.getElementsByClassName("dice1-contents"), document.getElementsByClassName('dice2-contents'), document.getElementsByClassName("dice3-contents"));
+
+    return diceArray;
+}
+
+console.table(getDiceElements());
 
 function getDiceOneElements() {
     const diceOneDivL = document.getElementsByClassName("dice1-contents letter-L"); 
@@ -39,9 +49,26 @@ function getDiceThreeElements() {
     return diceThreeArray;
 }
 
-function removeClass(element, className) {
+// remove a class from an element - can i loop through the classnames each time i loop an element to remove that classname only? assign the classnames to an array variable?
+function removeClass(element, classNames) {
     element.classList.remove(`${className}`)
 };
+
+function removeClasses(elements, classNames) {
+    for (let i=0; i<elements.length; i++) {
+        for (let j=0; j<classNames.length; j++) {
+            // if element[i] contains className[i], remove this class name from the classList
+            if elements[i].classList.contains(classNames[i]) {
+                removeClass(elements[i], classNames[i]);
+            }
+        }
+    }
+}
+
+function resetDie() {
+    const classArray = ["dice-1__letter-L--toggle", "dice-1__dot-1--toggle", "dice-1__letter-R--toggle", "dice-1__letter-C--toggle"];
+    removeClasses(diceArray, classArray);
+}
 
 
 function resetDiceOne() { 
